@@ -4,7 +4,7 @@ using System.Collections.Generic;
 class Movimento_Cavalo
 {
 
-    // Classe para armazenar osdsds dados
+    // Classe para armazenar osdsds dados TESTESTESTETESTESTE
     public class cell
     {
         public int x, y;
@@ -18,7 +18,7 @@ class Movimento_Cavalo
         }
     }
 
-    // Método utilizado retornando verdadeirodddd
+    // Método utilizado retornando verdadeiroddddasdsdasd
     // if (x, y) lies inside Board 
     static bool VerificarDentro(int x, int y, int N)
     {
