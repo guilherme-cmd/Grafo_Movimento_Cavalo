@@ -18,8 +18,8 @@ class Movimento_Cavalo
         }
     }
 
-    // Método utilizado retornando verdadeiroddddasdsdasd
-    // if (x, y) lies inside Board 
+    // Método utilizado retornando verdadeiro
+    // se (x, y) encontra-se no tabuleiro 
     static bool VerificarDentro(int x, int y, int N)
     {
         if (x >= 1 && x <= N && y >= 1 && y <= N)
@@ -56,7 +56,6 @@ class Movimento_Cavalo
         visit[PosIn[0], PosIn[1]] = true;
 
         // loop até nós tivermos um elemento na fila 
-        // loop untill we have one element in queue 
         while (q.Count != 0)
         {
             t = q.Peek();
