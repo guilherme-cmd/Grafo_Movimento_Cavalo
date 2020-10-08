@@ -72,8 +72,7 @@ class Movimento_Cavalo
                 x = t.x + dx[i];
                 y = t.y + dy[i];
 
-                // If reachable state is not yet visited and 
-                // inside board, push that state into queue 
+                // se o estado alcançavel não for visitado dentro do tabuleiro, ele aguarda na fila de espera.
                 if (VerificarDentro(x, y, Tam) && !visit[x, y])
                 {
                     visit[x, y] = true;
