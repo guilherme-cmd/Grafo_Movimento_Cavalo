@@ -4,7 +4,7 @@ using System.Collections.Generic;
 class Movimento_Cavalo
 {
 
-    // Classe para armazenar osdsds dados TESTE NOVO PUSH
+    // Classe para armazenar os dados
     public class cell
     {
         public int x, y;
@@ -26,8 +26,8 @@ class Movimento_Cavalo
             return true;
         return false;
     }
-    //oi eu sou o goku
-    // Method returns minimum step 
+
+    // Método de retorno do degrau minimo
     // Procurar a posição de destino
     static int minStepToReachTarget(int[] PosIn,
                                     int[] PosFim, int Tam)
@@ -39,7 +39,7 @@ class Movimento_Cavalo
         //fila para armazenar as posições do cavalo no tabuleiro 
         Queue<cell> q = new Queue<cell>();
 
-        // push starting position of knight with 0 distance 
+        // Inicia a posição do cavaleiro com zero.
         q.Enqueue(new cell(PosIn[0],
                            PosIn[1], 0));
 
@@ -55,18 +55,19 @@ class Movimento_Cavalo
         // Visitando posição inicial 
         visit[PosIn[0], PosIn[1]] = true;
 
+        // loop até nós tivermos um elemento na fila 
         // loop untill we have one element in queue 
         while (q.Count != 0)
         {
             t = q.Peek();
             q.Dequeue();
 
-            // if current cell is equal to target cell, 
-            // return its distance 
+            // Se a posição de inicio é igual a posição final
+            // retornando a distância
             if (t.x == PosFim[0] && t.y == PosFim[1])
                 return t.dis;
 
-            // loop for all reachable states 
+            // loop para todas as posições do tabuleiro
             for (int i = 0; i < 8; i++)
             {
                 x = t.x + dx[i];
@@ -84,7 +85,6 @@ class Movimento_Cavalo
         return int.MaxValue;
     }
 
-    // Driver code 
     public static void Main(String[] args)
     {
         int tamanho_tabuleiro = 8;
