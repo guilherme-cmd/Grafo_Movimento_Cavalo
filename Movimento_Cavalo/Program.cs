@@ -47,15 +47,14 @@ class Movimento_Cavalo
         int x, y;
         bool[,] visit = new bool[Tam + 1, Tam + 1];
 
+        // make all cell unvisited 
         for (int i = 1; i <= Tam; i++)
             for (int j = 1; j <= Tam; j++)
                 visit[i, j] = false;
 
-        try
-        {
             // Visitando posição inicial 
             visit[PosIn[0], PosIn[1]] = true;
-            visit[PosFim[0], PosFim[1]] = true;
+
 
             // loop até nós tivermos um elemento na fila 
             while (q.Count != 0)
@@ -83,11 +82,7 @@ class Movimento_Cavalo
                 }
             }
             return int.MaxValue;
-        }catch(Exception ex)
-        {            
-            return 0;
-        }
-    }
+        }        
 
     public static void Main(String[] args)
     {
@@ -95,24 +90,53 @@ class Movimento_Cavalo
 
         Console.WriteLine("Digite o movimento inicial do cavalo(Linha): ");
         movlinhain = int.Parse(Console.ReadLine());
-        Console.Clear();
-        Console.WriteLine("Digite o movimento inicial do cavalo(Coluna): ");
-        movcolunain = int.Parse(Console.ReadLine());
-        Console.Clear();
-        Console.WriteLine("Digite o movimento final do cavalo(Linha): ");
-        movlinhafim = int.Parse(Console.ReadLine());
-        Console.Clear();
-        Console.WriteLine("Digite o movimento final do cavalo(Coluna): ");
-        movcolunafim = int.Parse(Console.ReadLine());
-        Console.Clear();
-        int[] PosInicio = { movlinhain, movcolunain };
-        int[] PosFim = { movlinhafim, movcolunafim };
-        if(MovimentoMinimoChegada(PosInicio, PosFim, tamanho_tabuleiro) != 0)
-        Console.WriteLine(MovimentoMinimoChegada(PosInicio, PosFim, tamanho_tabuleiro));
+        if (movlinhain >=1 && movlinhain <= tamanho_tabuleiro)
+        {
+            Console.Clear();
+        }
         else
         {
-            Console.WriteLine("Movimento excede o tamanho do tabuleiro!!");
+            Console.WriteLine("Digite um número válido!!");
+            Environment.Exit(10);
         }
+        Console.WriteLine("Digite o movimento inicial do cavalo(Coluna): ");
+        movcolunain = int.Parse(Console.ReadLine());
+        if (movcolunain >= 1 && movcolunain <= tamanho_tabuleiro)
+        {
+            Console.Clear();
+        }
+        else
+        {
+            Console.WriteLine("Digite um número válido!!");
+            Environment.Exit(10);
+        }
+        Console.WriteLine("Digite o movimento final do cavalo(Linha): ");
+        movlinhafim = int.Parse(Console.ReadLine());
+        if (movlinhafim >= 1 && movlinhafim <= tamanho_tabuleiro)
+        {
+            Console.Clear();
+        }
+        else
+        {
+            Console.WriteLine("Digite um número válido!!");
+            Environment.Exit(10);
+        }
+        Console.WriteLine("Digite o movimento final do cavalo(Coluna): ");
+        movcolunafim = int.Parse(Console.ReadLine());
+        if (movcolunafim >= 1 && movcolunafim <= tamanho_tabuleiro)
+        {
+            Console.Clear();
+        }
+        else
+        {
+            Console.WriteLine("Digite um número válido!!");
+            Environment.Exit(10);
+        }
+        int[] PosInicio = { movlinhain, movcolunain };
+        int[] PosFim = { movlinhafim, movcolunafim };
+        
+        Console.WriteLine(MovimentoMinimoChegada(PosInicio, PosFim, tamanho_tabuleiro));
+        
 
         Console.ReadKey();
     }
