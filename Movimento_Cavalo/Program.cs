@@ -47,7 +47,6 @@ class Movimento_Cavalo
         int x, y;
         bool[,] visit = new bool[Tam + 1, Tam + 1];
 
-        // make all cell unvisited 
         for (int i = 1; i <= Tam; i++)
             for (int j = 1; j <= Tam; j++)
                 visit[i, j] = false;
