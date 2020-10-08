@@ -20,8 +20,6 @@ class Movimento_Cavalo
 
     // Método utilizado retornando verdadeiro
     // se (x, y) encontra-se no tabuleiro 
-    static bool VerificarDentro(int x, int y, int N)
-    {
         if (x >= 1 && x <= N && y >= 1 && y <= N)
             return true;
         return false;
@@ -29,8 +27,7 @@ class Movimento_Cavalo
 
     // Método de retorno do degrau minimo
     // Procurar a posição de destino
-    static int minStepToReachTarget(int[] PosIn,
-                                    int[] PosFim, int Tam)
+    static int minStepToReachTarget(int[] PosIn,int[] PosFim, int Tam)
     {
         // direção de x e y, onde o cavalo possa se mover 
         int[] dx = { -2, -1, 1, 2, -2, -1, 1, 2 };
@@ -85,12 +82,9 @@ class Movimento_Cavalo
 
     public static void Main(String[] args)
     {
-        int tamanho_tabuleiro = 8;
+        int tabuleiro_tam = 8;
         int[] PosInicio = { 1, 1 };
         int[] PosFim = { 8, 8 };
-        Console.WriteLine(
-            minStepToReachTarget(
-                PosInicio,
-                PosFim, tamanho_tabuleiro));
+        Console.WriteLine(minStepToReachTarget(PosInicio,PosFim, tabuleiro_tam));
     }
 }
