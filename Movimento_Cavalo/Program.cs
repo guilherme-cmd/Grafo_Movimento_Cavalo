@@ -23,13 +23,13 @@ class Movimento_Cavalo
     static bool VerificarDentro(int x, int y, int N)
     {
         if (x >= 1 && x <= N && y >= 1 && y <= N)
-            return true;
-        return false;
+            return true;      
+            return false;
     }
 
     // Método de retorno do degrau minimo
     // Procurar a posição de destino
-    static int minStepToReachTarget(int[] PosIn,
+    static int MovimentoMinimoChegada(int[] PosIn,
                                     int[] PosFim, int Tam)
     {
         // direção de x e y, onde o cavalo possa se mover 
@@ -52,45 +52,69 @@ class Movimento_Cavalo
             for (int j = 1; j <= Tam; j++)
                 visit[i, j] = false;
 
-        // Visitando posição inicial 
-        visit[PosIn[0], PosIn[1]] = true;
-
-        // loop até nós tivermos um elemento na fila 
-        while (q.Count != 0)
+        try
         {
-            t = q.Peek();
-            q.Dequeue();
+            // Visitando posição inicial 
+            visit[PosIn[0], PosIn[1]] = true;
+            visit[PosFim[0], PosFim[1]] = true;
 
-            // Se a posição de inicio é igual a posição final
-            // retornando a distância
-            if (t.x == PosFim[0] && t.y == PosFim[1])
-                return t.dis;
-
-            // loop para todas as posições do tabuleiro
-            for (int i = 0; i < 8; i++)
+            // loop até nós tivermos um elemento na fila 
+            while (q.Count != 0)
             {
-                x = t.x + dx[i];
-                y = t.y + dy[i];
+                t = q.Peek();
+                q.Dequeue();
 
-                // se o estado alcançavel não for visitado dentro do tabuleiro, ele aguarda na fila de espera.
-                if (VerificarDentro(x, y, Tam) && !visit[x, y])
+                // Se a posição de inicio é igual a posição final
+                // retornando a distância
+                if (t.x == PosFim[0] && t.y == PosFim[1])
+                    return t.dis;
+
+                // loop para todas as posições do tabuleiro
+                for (int i = 0; i < 8; i++)
                 {
-                    visit[x, y] = true;
-                    q.Enqueue(new cell(x, y, t.dis + 1));
+                    x = t.x + dx[i];
+                    y = t.y + dy[i];
+
+                    // se o estado alcançavel não for visitado dentro do tabuleiro, ele aguarda na fila de espera.
+                    if (VerificarDentro(x, y, Tam) && !visit[x, y])
+                    {
+                        visit[x, y] = true;
+                        q.Enqueue(new cell(x, y, t.dis + 1));
+                    }
                 }
             }
+            return int.MaxValue;
+        }catch(Exception ex)
+        {            
+            return 0;
         }
-        return int.MaxValue;
     }
 
     public static void Main(String[] args)
     {
-        int tamanho_tabuleiro = 8;
-        int[] PosInicio = { 1, 1 };
-        int[] PosFim = { 8, 8 };
-        Console.WriteLine(
-            minStepToReachTarget(
-                PosInicio,
-                PosFim, tamanho_tabuleiro));
+        int tamanho_tabuleiro = 8, movlinhain, movcolunain, movlinhafim, movcolunafim;
+
+        Console.WriteLine("Digite o movimento inicial do cavalo(Linha): ");
+        movlinhain = int.Parse(Console.ReadLine());
+        Console.Clear();
+        Console.WriteLine("Digite o movimento inicial do cavalo(Coluna): ");
+        movcolunain = int.Parse(Console.ReadLine());
+        Console.Clear();
+        Console.WriteLine("Digite o movimento final do cavalo(Linha): ");
+        movlinhafim = int.Parse(Console.ReadLine());
+        Console.Clear();
+        Console.WriteLine("Digite o movimento final do cavalo(Coluna): ");
+        movcolunafim = int.Parse(Console.ReadLine());
+        Console.Clear();
+        int[] PosInicio = { movlinhain, movcolunain };
+        int[] PosFim = { movlinhafim, movcolunafim };
+        if(MovimentoMinimoChegada(PosInicio, PosFim, tamanho_tabuleiro) != 0)
+        Console.WriteLine(MovimentoMinimoChegada(PosInicio, PosFim, tamanho_tabuleiro));
+        else
+        {
+            Console.WriteLine("Movimento excede o tamanho do tabuleiro!!");
+        }
+
+        Console.ReadKey();
     }
 }
