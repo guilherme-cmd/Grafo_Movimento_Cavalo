@@ -29,8 +29,7 @@ class Movimento_Cavalo
 
     // Method returns minimum step 
     // Procurar a posição de destino
-    static int minStepToReachTarget(int[] PosIn,
-                                    int[] PosFim, int Tam)
+    static int minStepToReachTarget(int[] PosIn,int[] PosFim, int Tam)
     {
         // direção de x e y, onde o cavalo possa se mover 
         int[] dx = { -2, -1, 1, 2, -2, -1, 1, 2 };
@@ -90,9 +89,6 @@ class Movimento_Cavalo
         int tamanho_tabuleiro = 8;
         int[] PosInicio = { 1, 1 };
         int[] PosFim = { 8, 8 };
-        Console.WriteLine(
-            minStepToReachTarget(
-                PosInicio,
-                PosFim, tamanho_tabuleiro));
+        Console.WriteLine(minStepToReachTarget(PosInicio,PosFim, tamanho_tabuleiro));
     }
 }
